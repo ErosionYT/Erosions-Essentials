@@ -1,9 +1,11 @@
 name: Essentials
-author: ErosionYT
-website: https://github.com/ErosionYT
+Description: "EclipsePE core"
 main: ErosionYT\Essentials\Main
+website: https://github.com/ErosionYT
+author: ErosionYT
 version: 1.0.0
 api: 4.0.0
+mcpe-protocols: [475, 476, 477, 479, 485, 486, 490, 491]
 
 permissions:
   essentials.reparui.command:

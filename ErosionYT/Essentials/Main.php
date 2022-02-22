@@ -4,6 +4,9 @@ namespace ErosionYT\Essentials;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use pocketmine\event\server;
+use pocketmine\utils\TextFormat;
+use pocketmine\player\player;
 
 use ErosionYT\Essentials\Commands\{CreditsCommand,
     FlyCommand,
@@ -61,7 +64,7 @@ class Main extends PluginBase
         ]);
 
         $this->getScheduler()->scheduleRepeatingTask(new AnnoucementsTask($this), 3200); // 5 minutes
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 
         $this->getLogger()->notice("---===Essentials has loaded!===---");
     }
