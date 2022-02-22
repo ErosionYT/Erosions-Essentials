@@ -6,10 +6,13 @@ use ErosionYT\Essentials\Main;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\player\Player;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 
-class FlyCommand extends Command{
+class FlyCommand extends Command implements PluginOwned {
 
     public Config $config;
     public Main $plugin;
@@ -28,6 +31,12 @@ class FlyCommand extends Command{
 			$sender->sendMessage(C::RED . "You do not have permission to use this command");
 			return false;
 		}
+
+        if (!($sender instanceof Player)) {
+            $sender->sendMessage(C::RED . "This command is for players only");
+            return false;
+        }
+
         if (count($args) < 1) {
 			$sender->sendMessage(C::RED . "/fly <on|off>");
             return false;
@@ -50,5 +59,9 @@ class FlyCommand extends Command{
 		}
 	    return true;
 	}
+
+    public function getOwningPlugin(): Plugin
+    {
+        return Main::getInstance();
+    }
 }
-	     return false;
