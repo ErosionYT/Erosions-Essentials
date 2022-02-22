@@ -36,14 +36,9 @@ class Main extends PluginBase
 
         // Load worlds
         foreach ((array)$this->getConfig()->get("worlds") as $level_name) {
-
             if (!$this->getServer()->getWorldManager()->isWorldLoaded($level_name)) {
                 $this->getServer()->getWorldManager()->loadWorld($level_name);
-                if ($this->getServer()->getWorldManager()->isWorldLoaded($level_name)) continue;
-
-                $this->getServer()->getLogger()->notice("Cannot load level: $level_name");
             }
-
         }
 
         // Register commands
