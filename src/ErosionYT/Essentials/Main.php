@@ -17,7 +17,6 @@ use ErosionYT\Essentials\Commands\{
 };
 use ErosionYT\Essentials\Tasks\AnnouncementsTask;
 
-
 class Main extends PluginBase
 {
     /** @var self */

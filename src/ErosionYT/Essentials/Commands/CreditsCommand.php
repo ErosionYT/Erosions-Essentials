@@ -27,7 +27,7 @@ class CreditsCommand extends Command implements PluginOwned
             return;
         }
 
-        $sender->sendMessage( C::AQUA . "This plugin was coded and developed by ErosionYT\n" . C::YELLOW . "https://github.com/ErosionYT/\n" . C::YELLOW . "https://discord.eclipsepe.xyz/");
+        $sender->sendMessage( C::AQUA . "This plugin was coded and developed by ErosionYT & Wolfden133\n" . C::YELLOW . "https://github.com/ErosionYT/\n" . C::YELLOW . "https://github.com/WolfDen133\n" . C::YELLOW . "https://discord.eclipsepe.xyz/");
     }
 
     public function getOwningPlugin(): Plugin
