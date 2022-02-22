@@ -1,0 +1,29 @@
+name: Essentials
+author: ErosionYT
+website: https://github.com/ErosionYT
+main: ErosionYT\Essentials\Main
+version: 1.0.0
+api: 4.0.0
+depend:
+  - FormAPi
+  - BedrockEconomy
+
+permissions:
+  essentials.reparui.command:
+    default: true
+  essentials.heal.command:
+    default: op
+  essentials.fly.command:
+    default: op
+  essentials.feed.command:
+    default: op
+  essentials.credits.command:
+    default: true
+  essentials.gmc.command:
+    default: op
+  essentials.gms.command:
+    default: op
+  essentials.gmspc.command:
+    default: op
+  essentials.gma.command:
+    default: op

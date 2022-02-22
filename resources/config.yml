@@ -1,0 +1,57 @@
+# ███████╗██████╗░░█████╗░░██████╗██╗░█████╗░███╗░░██╗░██████╗
+# ██╔════╝██╔══██╗██╔══██╗██╔════╝██║██╔══██╗████╗░██║██╔════╝
+# █████╗░░██████╔╝██║░░██║╚█████╗░██║██║░░██║██╔██╗██║╚█████╗░
+# ██╔══╝░░██╔══██╗██║░░██║░╚═══██╗██║██║░░██║██║╚████║░╚═══██╗
+# ███████╗██║░░██║╚█████╔╝██████╔╝██║╚█████╔╝██║░╚███║██████╔╝
+# ╚══════╝╚═╝░░╚═╝░╚════╝░╚═════╝░╚═╝░╚════╝░╚═╝░░╚══╝╚═════╝░
+
+# ███████╗░██████╗░██████╗███████╗███╗░░██╗████████╗██╗░█████╗░██╗░░░░░░██████╗
+# ██╔════╝██╔════╝██╔════╝██╔════╝████╗░██║╚══██╔══╝██║██╔══██╗██║░░░░░██╔════╝
+# █████╗░░╚█████╗░╚█████╗░█████╗░░██╔██╗██║░░░██║░░░██║███████║██║░░░░░╚█████╗░
+# ██╔══╝░░░╚═══██╗░╚═══██╗██╔══╝░░██║╚████║░░░██║░░░██║██╔══██║██║░░░░░░╚═══██╗
+# ███████╗██████╔╝██████╔╝███████╗██║░╚███║░░░██║░░░██║██║░░██║███████╗██████╔╝
+# ╚══════╝╚═════╝░╚═════╝░╚══════╝╚═╝░░╚══╝░░░╚═╝░░░╚═╝╚═╝░░╚═╝╚══════╝╚═════╝░
+
+# Command prefix
+# Change the prefix of the plugin
+# Use | § | to set the colours of your messages
+prefix: "§f(§cEssentials§f)§r "
+
+# Server name / MOTD
+# Use | § | to set the colours of your messages
+motd: "My server"
+
+# Join & Leave messages
+# Change what your join and leave messages are
+# Use | {player} | to mention the player that has joined/left
+# Use | § | to set the colours of your messages
+join-message: "Welcome {player}"
+leave-message: "Goodbye {player}"
+
+# Server restart message
+# Use | § | to set the colours of your messages
+kick-message: "The server is restarting"
+
+# List the world you want loaded
+worlds:
+  - "World1"
+  - "World2"
+
+# Repair command
+# Price = Price per dmg point
+price: 100
+
+# Gamemode Commands
+# Use | § | to set the colours of your messages
+adventure-mode: "You have changed your gamemode to Adventure"
+creative-mode: "You have changed your gamemode to Creative"
+survival-mode: "You have changed your gamemode to Survival"
+spectator-mode: "You have changed your gamemode to spectator"
+
+# Announcements
+# Announcements will be displayed every 5 minutes when someone is online
+# Use | § | to set the colours of your messages
+  announcements:
+    - "§l§cPlugin coded by ErosionYT"
+    - "test1"
+    - "test2"
