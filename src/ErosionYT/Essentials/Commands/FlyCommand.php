@@ -6,24 +6,25 @@ use ErosionYT\Essentials\Main;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 
 class FlyCommand extends Command{
 
-    public $config;
-    public $plugin;
+    public Config $config;
+    public Main $plugin;
 
 	public function __construct(string $name, Main $plugin) {
         parent::__construct($name);
         $this->setDescription("Fly in Survival");
         $this->setAliases(['']);
-        $this->setPermission("fly.command");
+        $this->setPermission("essentials.fly.command");
 
 		$this->plugin = $plugin;
         $this->config = $plugin->getConfig();
     }
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool{
-		if (!$sender->hasPermission("fly.command")) {
+		if (!$sender->hasPermission($this->getPermission())) {
 			$sender->sendMessage(C::RED . "You do not have permission to use this command");
 			return false;
 		}

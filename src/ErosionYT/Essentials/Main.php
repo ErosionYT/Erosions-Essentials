@@ -4,11 +4,9 @@ namespace ErosionYT\Essentials;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
-use pocketmine\event\server;
-use pocketmine\utils\TextFormat;
-use pocketmine\player\player;
 
-use ErosionYT\Essentials\Commands\{CreditsCommand,
+use ErosionYT\Essentials\Commands\{
+    CreditsCommand,
     FlyCommand,
     FeedCommand,
     HealCommand,
@@ -16,8 +14,9 @@ use ErosionYT\Essentials\Commands\{CreditsCommand,
     GmsCommand,
     GmcCommand,
     GmaCommand,
-    RepairCommand};
-use ErosionYT\Essentials\Tasks\{AnnoucementsTask};
+    RepairCommand
+};
+use ErosionYT\Essentials\Tasks\AnnouncementsTask;
 
 
 class Main extends PluginBase
@@ -25,13 +24,15 @@ class Main extends PluginBase
     /** @var self */
     private static Main $instance;
 
-    public array $Config = [];
-
-    public function onEnable() : void
+    protected function onLoad(): void
     {
-        $config = new Config(Main::getInstance()->getDataFolder() . "config.yml", Config::YAML);
         $this->saveDefaultConfig();
         self::$instance = $this;
+    }
+
+    protected function onEnable() : void
+    {
+        $config = $this->getConfig();
 
         $this->getServer()->getNetwork()->setName($config->get("motd"));
 
@@ -40,9 +41,7 @@ class Main extends PluginBase
 
             if (!$this->getServer()->getWorldManager()->isWorldLoaded($level_name)) {
                 $this->getServer()->getWorldManager()->loadWorld($level_name);
-                if ($this->getServer()->getWorldManager()->isWorldLoaded($level_name)) {
-                    continue;
-                }
+                if ($this->getServer()->getWorldManager()->isWorldLoaded($level_name)) continue;
 
                 $this->getServer()->getLogger()->notice("Cannot load level: $level_name");
             }
@@ -63,15 +62,16 @@ class Main extends PluginBase
 
         ]);
 
-        $this->getScheduler()->scheduleRepeatingTask(new AnnoucementsTask($this), 3200);
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+        $this->getScheduler()->scheduleRepeatingTask(new AnnouncementsTask(), 3200); // 5 minutes
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 
+        $this->getLogger()->notice("---===Essentials has loaded!===---");
     }
-    public function onDisable() : void {
-        $config = new Config(Main::getInstance()->getDataFolder() . "config.yml", Config::YAML);
-        foreach ($this->getServer()->getOnlinePlayers() as $player) {
-            $player->kick($config->get("kick-message"), false);
-        }
+
+    protected function onDisable() : void {
+        $config = $this->getConfig();
+
+        foreach ($this->getServer()->getOnlinePlayers() as $player) $player->kick($config->get("kick-message"), false);
     }
 
     public static function getInstance(): self

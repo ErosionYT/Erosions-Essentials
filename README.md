@@ -1,6 +1,8 @@
 # Erosion's Essentials
 Plugin coded by ErosionYT for public use.
 
+Fixed by (WolfDen133)[https://github.com/WolfDen133)
+
 ## Permissions
 | Command  | Permission | Default |
 | :------------ |:---------------:| -----:|
@@ -14,5 +16,4 @@ Plugin coded by ErosionYT for public use.
 |Repair|essentials.repairui.command|op|
 
 ## Plugins needed
-- [FormAPI](https://github.com/jojoe77777/FormAPI)
 - [BedrockEconomy](https://poggit.pmmp.io/p/BedrockEconomy/2.0.4)
