@@ -1,11 +1,30 @@
 name: Essentials
-Description: "EclipsePE core"
 main: ErosionYT\Essentials\Main
 website: https://github.com/ErosionYT
 author: ErosionYT
 version: 1.0.0
 api: 4.0.0
 mcpe-protocols: [475, 476, 477, 479, 485, 486, 490, 491]
+
+commands:
+  CreditsCommand:
+    permission: essentials.credits.command
+  FeedCommand:
+    permission: essentials.feed.command
+  FlyCommand:
+    permission: essentials.fly.command
+  GmaCommand:
+    permission: essentials.gma.command
+  GmcCommand:
+    permission: essentials.gmc.command
+  GmsCommand:
+    permission: essentials.gms.command
+  GmspcCommand:
+    permission: essentials.gmspc.command
+  HealCommand:
+    permission: essentials.heal.command
+  RepairCommand:
+    permission: essentials.repair.command
 
 permissions:
   essentials.reparui.command:

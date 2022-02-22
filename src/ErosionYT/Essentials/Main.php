@@ -23,7 +23,7 @@ use ErosionYT\Essentials\Tasks\{AnnoucementsTask};
 class Main extends PluginBase
 {
     /** @var self */
-    private static $instance;
+    private static Main $instance;
 
     public array $Config = [];
 
@@ -63,10 +63,9 @@ class Main extends PluginBase
 
         ]);
 
-        $this->getScheduler()->scheduleRepeatingTask(new AnnoucementsTask($this), 3200); // 5 minutes
+        $this->getScheduler()->scheduleRepeatingTask(new AnnoucementsTask($this), 3200);
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 
-        $this->getLogger()->notice("---===Essentials has loaded!===---");
     }
     public function onDisable() : void {
         $config = new Config(Main::getInstance()->getDataFolder() . "config.yml", Config::YAML);
