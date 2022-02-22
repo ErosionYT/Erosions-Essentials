@@ -6,15 +6,19 @@ use pocketmine\player\Player;
 use pocketmine\player\GameMode;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 use ErosionYT\Essentials\Main;
 
-class GmspcCommand extends Command{
+class GmspcCommand extends Command implements PluginOwned {
+
+    private Config $config;
 
     public function __construct(string $name, Main $plugin)
     {
         parent::__construct($name);
-        $this->plugin = $plugin;
         $this->setPermission("essentials.gmspc.command");
         $this->setDescription("Change your gamemode to Spectator");
         $this->setAliases(['Spectator', '3', 'spec']);
@@ -35,5 +39,9 @@ class GmspcCommand extends Command{
         $sender->setGamemode(GameMode::SPECTATOR());
         $sender->sendMessage($this->config->get("prefix") . C::AQUA . $this->config->get("spectator-mode"));
         return true;
+    }
+    public function getOwningPlugin(): Plugin
+    {
+        return Main::getInstance();
     }
 }

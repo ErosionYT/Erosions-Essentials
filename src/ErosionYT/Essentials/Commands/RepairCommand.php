@@ -5,6 +5,8 @@ namespace ErosionYT\Essentials\Commands;
 use ErosionYT\Essentials\Libs\CustomForm;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 use pocketmine\item\Armor;
@@ -14,7 +16,7 @@ use pocketmine\player\Player;
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
 use ErosionYT\Essentials\Main;
 
-class RepairCommand extends Command
+class RepairCommand extends Command implements PluginOwned
 {
     public Config $config;
     public Main $plugin;
@@ -90,5 +92,10 @@ class RepairCommand extends Command
         $f->setTitle("•RepairUI•");
         $f->addLabel("§cYour money: §f$mne \n§cPrice per Damage: §f$mny\n§cItem damage: §f$dg \n§cTotal money needed : §f$pc");
         $sender->sendForm($f);
+    }
+
+    public function getOwningPlugin(): Plugin
+    {
+        return Main::getInstance();
     }
 }

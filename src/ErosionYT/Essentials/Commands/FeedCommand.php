@@ -7,10 +7,12 @@ use ErosionYT\Essentials\Main;
 use pocketmine\player\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 
-class FeedCommand extends Command{
+class FeedCommand extends Command implements PluginOwned {
 
     public Main $plugin;
     public Config $config;
@@ -34,8 +36,18 @@ class FeedCommand extends Command{
 			$sender->sendMessage(C::RED . "You do not have permission to use this command");
 			return;
 		}
+
+        if (!($sender instanceof Player)) {
+            $sender->sendMessage(C::RED . "This command is for players only");
+            return;
+        }
 		$sender->getHungerManager()->setFood(20);
         $sender->getHungerManager()->setSaturation(5);
 		$sender->sendMessage($this->config->get("prefix") . C::AQUA . "You have been fed");
 	}
+
+    public function getOwningPlugin(): Plugin
+    {
+        return Main::getInstance();
+    }
 }
