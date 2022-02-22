@@ -7,16 +7,17 @@ use ErosionYT\Essentials\Main;
 use pocketmine\player\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 
 class FeedCommand extends Command{
 
-    public $plugin;
-    public $config;
+    public Main $plugin;
+    public Config $config;
 
 	public function __construct(string $name, Main $plugin) {
         parent::__construct($name);
-        $this->setPermission("feed.command");
+        $this->setPermission("essentials.feed.command");
         $this->setDescription("Feed yourself");
         $this->setUsage("/feed");
         $this->setAliases(['']);
@@ -29,7 +30,7 @@ class FeedCommand extends Command{
         $plugin = $this->plugin;
         $this->config = $plugin->getConfig();
 
-		if (!$sender->hasPermission("feed.command")) {
+		if (!$sender->hasPermission($this->getPermission())) {
 			$sender->sendMessage(C::RED . "You do not have permission to use this command");
 			return;
 		}

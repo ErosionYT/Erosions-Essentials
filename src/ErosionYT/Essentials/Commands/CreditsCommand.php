@@ -23,7 +23,7 @@ class CreditsCommand extends Command
     {
         if (!$sender->hasPermission("essentials.credits.command")) {
             $sender->sendMessage(C::RED . "You do not have permission to use this command");
-            return false;
+            return;
         }
 
         $sender->sendMessage( C::AQUA . "This plugin was coded and developed by ErosionYT\n" . C::YELLOW . "https://github.com/ErosionYT/\n" . C::YELLOW . "https://discord.eclipsepe.xyz/");
