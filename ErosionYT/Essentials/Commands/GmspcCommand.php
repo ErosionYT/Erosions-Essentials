@@ -7,6 +7,7 @@ use pocketmine\player\GameMode;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat as C;
+use ErosionYT\Essentials\Main;
 
 class GmspcCommand extends Command{
 

@@ -12,6 +12,7 @@ use pocketmine\item\Item;
 use pocketmine\item\Durable;
 
 use cooldogedev\BedrockEconomy\BedrockEconomy;
+use ErosionYT\Essentials\Main;
 
 class RepairCommand extends Command
 {

@@ -4,9 +4,6 @@ website: https://github.com/ErosionYT
 main: ErosionYT\Essentials\Main
 version: 1.0.0
 api: 4.0.0
-depend:
-  - FormAPi
-  - BedrockEconomy
 
 permissions:
   essentials.reparui.command:

@@ -61,6 +61,7 @@ class Main extends PluginBase
         ]);
 
         $this->getScheduler()->scheduleRepeatingTask(new AnnoucementsTask($this), 3200); // 5 minutes
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 
         $this->getLogger()->notice("---===Essentials has loaded!===---");
     }

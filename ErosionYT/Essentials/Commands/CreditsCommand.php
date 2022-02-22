@@ -5,6 +5,7 @@ namespace ErosionYT\Essentials\Commands;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat as C;
+use ErosionYT\Essentials\Main;
 
 class CreditsCommand extends Command
 {

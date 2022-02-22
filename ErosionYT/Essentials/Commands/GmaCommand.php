@@ -2,11 +2,14 @@
 
 namespace ErosionYT\Essentials\Commands;
 
+use ErosionYT\Essentials\Main;
+
 use pocketmine\player\Player;
 use pocketmine\player\GameMode;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat as C;
+
 
 class GmaCommand extends Command{
 
