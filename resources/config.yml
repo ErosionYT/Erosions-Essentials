@@ -51,7 +51,7 @@ spectator-mode: "You have changed your gamemode to spectator"
 # Announcements
 # Announcements will be displayed every 5 minutes when someone is online
 # Use | § | to set the colours of your messages
-  announcements:
-    - "§l§cPlugin coded by ErosionYT"
-    - "test1"
-    - "test2"
+announcements:
+  - "§l§cPlugin coded by ErosionYT"
+  - "test1"
+  - "test2"
