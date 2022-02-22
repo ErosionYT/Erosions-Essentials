@@ -14,5 +14,5 @@ Plugin coded by ErosionYT for public use.
 |Repair|essentials.repairui.command|op|
 
 ## Plugins needed
-You can find FormAPU [here](https://github.com/jojoe77777/FormAPI)
-And you can find BedrockEconomy [here](https://poggit.pmmp.io/p/BedrockEconomy/2.0.4)
+- [FormAPI](https://github.com/jojoe77777/FormAPI)
+- [BedrockEconomy](https://poggit.pmmp.io/p/BedrockEconomy/2.0.4)
