@@ -3,7 +3,6 @@
 namespace ErosionYT\Essentials;
 
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\Config;
 
 use ErosionYT\Essentials\Commands\{
     CreditsCommand,
@@ -57,7 +56,7 @@ class Main extends PluginBase
             new GmsCommand("gms", $this),
             new GmcCommand("gmc", $this),
             new GmaCommand("gma", $this),
-            new CreditsCommand("credits", $this),
+            new CreditsCommand("credits"),
             new RepairCommand("repair", $this)
 
         ]);
