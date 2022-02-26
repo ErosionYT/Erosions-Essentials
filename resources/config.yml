@@ -16,6 +16,7 @@
 # Change the prefix of the plugin
 # Use | § | to set the colours of your messages
 prefix: "§f(§cEssentials§f)§r "
+staffchat-prefix: "§f(§cEssentials staff§f)§r"
 
 # Server name / MOTD
 # Use | § | to set the colours of your messages

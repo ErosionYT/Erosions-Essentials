@@ -27,3 +27,9 @@ permissions:
     default: op
   essentials.gma.command:
     default: op
+  essentials.freeze.command:
+    default: op
+  essentials.staffchat.command:
+    default: op
+  essentials.speed.command:
+    default: op

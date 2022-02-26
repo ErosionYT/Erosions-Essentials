@@ -13,7 +13,10 @@ use ErosionYT\Essentials\Commands\{
     GmsCommand,
     GmcCommand,
     GmaCommand,
-    RepairCommand
+    RepairCommand,
+    FreezeCommand,
+    SpeedCommand,
+    StaffchatCommand
 };
 use ErosionYT\Essentials\Tasks\AnnouncementsTask;
 
@@ -21,6 +24,9 @@ class Main extends PluginBase
 {
     /** @var self */
     private static Main $instance;
+
+    /** @var string **/
+    public array $freezeList = [];
 
     protected function onLoad(): void
     {
@@ -51,12 +57,15 @@ class Main extends PluginBase
             new GmcCommand("gmc", $this),
             new GmaCommand("gma", $this),
             new CreditsCommand("credits"),
-            new RepairCommand("repair", $this)
+            new RepairCommand("repair", $this),
+            new FreezeCommand("freeze", $this),
+            new StaffchatCommand("staffchat", $this),
+            new SpeedCommand("speed", $this)
 
         ]);
 
         $this->getScheduler()->scheduleRepeatingTask(new AnnouncementsTask(), 3200); // 5 minutes
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 
         $this->getLogger()->notice("---===Essentials has loaded!===---");
     }

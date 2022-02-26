@@ -54,14 +54,14 @@ class RepairCommand extends Command implements PluginOwned
 
 
             $economy = BedrockEconomyAPI::getInstance();
-            $mymoney = $economy->getPlayerBalance($sender);
+            $mymoney = $economy->getPlayerBalance($sender->getName());
             $cash = $this->plugin->getConfig()->get("price");
             $dg = $sender->getInventory()->getItemInHand()->getMeta();
             $index = $sender->getInventory()->getHeldItemIndex();
             $item = $sender->getInventory()->getItem($index);
 
 
-            if($mymoney->count() < $cash * $dg){
+            if($mymoney < $cash * $dg){
                 $sender->sendMessage($this->config->get("prefix") . TextFormat::GRAY . "You don't have enough money!");
                 return;
             }
@@ -87,10 +87,9 @@ class RepairCommand extends Command implements PluginOwned
         $dg = $sender->getInventory()->getItemInHand()->getMeta();
         $pc = $mny * $dg;
         $economy = BedrockEconomyAPI::getInstance();
-        $mne = $economy->getPlayerBalance($sender)->count();
 
         $f->setTitle("•RepairUI•");
-        $f->addLabel("§cYour money: §f$mne \n§cPrice per Damage: §f$mny\n§cItem damage: §f$dg \n§cTotal money needed : §f$pc");
+        $f->addLabel("\n§cPrice per Damage: §f$mny\n§cItem damage: §f$dg \n§cTotal money needed : §f$pc");
         $sender->sendForm($f);
     }
 
