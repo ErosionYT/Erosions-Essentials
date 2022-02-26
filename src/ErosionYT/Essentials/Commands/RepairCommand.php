@@ -61,7 +61,7 @@ class RepairCommand extends Command implements PluginOwned
             $item = $sender->getInventory()->getItem($index);
 
 
-            if($mymoney < $cash * $dg){
+            if($mymoney->count() < $cash * $dg){
                 $sender->sendMessage($this->config->get("prefix") . TextFormat::GRAY . "You don't have enough money!");
                 return;
             }

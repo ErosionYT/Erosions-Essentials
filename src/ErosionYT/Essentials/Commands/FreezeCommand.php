@@ -5,7 +5,7 @@ namespace ErosionYT\Essentials\Commands;
 use ErosionYT\Essentials\Main;
 
 use pocketmine\command\CommandSender;
-use pocketmine\player\player;
+use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\command\Command;
 use pocketmine\utils\Config;

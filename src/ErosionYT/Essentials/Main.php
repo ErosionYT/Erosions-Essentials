@@ -15,7 +15,6 @@ use ErosionYT\Essentials\Commands\{
     GmaCommand,
     RepairCommand,
     FreezeCommand,
-    SpeedCommand,
     StaffchatCommand
 };
 use ErosionYT\Essentials\Tasks\AnnouncementsTask;
@@ -25,8 +24,11 @@ class Main extends PluginBase
     /** @var self */
     private static Main $instance;
 
-    /** @var string **/
+    /** @var array */
     public array $freezeList = [];
+
+    /** @var string */
+    public string $staffchat;
 
     protected function onLoad(): void
     {
@@ -59,8 +61,7 @@ class Main extends PluginBase
             new CreditsCommand("credits"),
             new RepairCommand("repair", $this),
             new FreezeCommand("freeze", $this),
-            new StaffchatCommand("staffchat", $this),
-            new SpeedCommand("speed", $this)
+            new StaffchatCommand("staffchat", $this)
 
         ]);
 
