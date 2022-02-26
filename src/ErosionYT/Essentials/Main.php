@@ -27,9 +27,6 @@ class Main extends PluginBase
     /** @var array */
     public array $freezeList = [];
 
-    /** @var string */
-    public string $staffchat;
-
     protected function onLoad(): void
     {
         $this->saveDefaultConfig();
