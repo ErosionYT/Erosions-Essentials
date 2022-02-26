@@ -7,9 +7,9 @@ Fixed by [WolfDen133](https://github.com/WolfDen133)
 - [x] Announcement system (can change in the config)
 - [x] Easy gamemode control
 - [x] Custom join messages
-- [] Freeze commands
+- [ ] Freeze commands
 - [x] Staff chat
-- [] Speed command
+- [ ] Speed command
 
 ## Permissions
 | Command  | Permission | Default |
