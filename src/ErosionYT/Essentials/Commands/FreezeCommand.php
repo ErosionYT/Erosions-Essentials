@@ -52,7 +52,7 @@ class FreezeCommand extends Command implements PluginOwned
 
             $this->plugin->freezeList[] = $target->getName();
             $sender->sendMessage($this->config->get("prefix") . C::AQUA . 'Player ' . C::RED . $target->getName() . C::AQUA . ' will now be frozen');
-            $target->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
+            $target->teleport(Server::getInstance()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
             $target->setImmobile(true);
             $target->sendMessage($this->config->get("prefix") . C::RED . "You cannot move while frozen");
             return true;
