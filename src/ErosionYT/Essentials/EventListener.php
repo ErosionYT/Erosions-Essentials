@@ -30,8 +30,7 @@ class EventListener implements Listener {
     {
         $name = $ev->getPlayer()->getName();
 
-        $message = $this->config->get("Join-message");
-        $msg = str_replace("{player}", $name, $message);
+        $msg = $this->getFormattedValue('Join-message', ['{player}' => $name]);
         $ev->setJoinMessage("$msg");
 
     }
@@ -39,8 +38,7 @@ class EventListener implements Listener {
     public function onQuit (PlayerQuitEvent $ev) {
         $name = $ev->getPlayer()->getName();
 
-        $message = $this->config->get("Quit-message");
-        $msg = str_replace("{player}", $name, $message);
+        $msg = $this->getFormattedValue('Quit-message', ['{player}' => $name]);
         $ev->setQuitMessage("$msg");
 
     }
@@ -51,13 +49,13 @@ class EventListener implements Listener {
 
         if (in_array($ev->getPlayer()->getName(), $this->plugin->freezeList)) {
             $ev->cancel();
-            $ev->getPlayer()->sendMessage($this->config->get("prefix") . C::RED . "You cannot use commands or chat while frozen.");
+            $ev->getPlayer()->sendMessage($this->getFormattedValue('prefix') . C::RED . "You cannot use commands or chat while frozen.");
         }
 
         if (isset($this->plugin->staffchat[strtolower($player->getName())])) {
             foreach ($this->plugin->getServer()->getOnlinePlayers() as $target) {
                 if ($target->hasPermission("essentials.staffchat.command")) {
-                    $target->sendMessage($this->config->get("staffchat-prefix") . C::RED . $player->getName() . ": " . C::WHITE . $message);
+                    $target->sendMessage($this->getFormattedValue('staffchat-prefix') . C::RED . $player->getName() . ": " . C::WHITE . $message);
                     $ev->Cancel();
                 }
             }
@@ -67,14 +65,14 @@ class EventListener implements Listener {
     public function onLogout(PlayerQuitEvent $ev) : void {
         $player = $ev->getPlayer();
         if (in_array($ev->getPlayer()->getName(), $this->plugin->freezeList)) {
-            $ev->setQuitMessage($this->config->get("prefix") . C::AQUA . $player->getName() . C::RED . " Has logged out while frozen.");
+            $ev->setQuitMessage($this->getFormattedValue('prefix') . C::AQUA . $player->getName() . C::RED . " Has logged out while frozen.");
         }
     }
 
     public function onDrop(PlayerDropItemEvent $ev) : void {
         if(in_array($ev->getPlayer()->getName(), $this->plugin->freezeList)) {
             $ev->cancel();
-            $ev->getPlayer()->sendMessage($this->config->get("prefix") . C::RED . "You cannot drop items while frozen.");
+            $ev->getPlayer()->sendMessage($this->getFormattedValue('prefix') . C::RED . "You cannot drop items while frozen.");
         }
     }
 
@@ -82,14 +80,14 @@ class EventListener implements Listener {
     public function onBreak(BlockBreakEvent $ev) : void {
         if(in_array($ev->getPlayer()->getName(), $this->plugin->freezeList)) {
             $ev->cancel();
-            $ev->getPlayer()->sendMessage($this->config->get("prefix") . C::RED ."You cannot break blocks while frozen.");
+            $ev->getPlayer()->sendMessage($this->getFormattedValue('prefix') . C::RED ."You cannot break blocks while frozen.");
         }
     }
 
     public function onPlace(BlockPlaceEvent $ev) : void {
         if(in_array($ev->getPlayer()->getName(), $this->plugin->freezeList)) {
             $ev->cancel();
-            $ev->getPlayer()->sendMessage($this->config->get("prefix") . C::RED . "You cannot place blocks while frozen.");
+            $ev->getPlayer()->sendMessage($this->getFormattedValue('prefix') . C::RED . "You cannot place blocks while frozen.");
         }
     }
 }

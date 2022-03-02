@@ -76,6 +76,15 @@ class Main extends PluginBase
         foreach ($this->getServer()->getOnlinePlayers() as $player) $player->kick($config->get("kick-message"), false);
     }
 
+    public function getFormattedValue (string $key, array $wildcards = []) : string
+    {
+        $value = $this->getConfig()->getNested($key);
+
+        foreach ($wildcards as $find => $replace) $value = str_replace($find, $replace, $value);
+
+        return TextFormat::colorize($value);
+    }
+
     public static function getInstance(): self
     {
         return self::$instance;

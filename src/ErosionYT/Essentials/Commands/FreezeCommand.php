@@ -45,20 +45,22 @@ class FreezeCommand extends Command implements PluginOwned
         if ($target instanceof Player) {
             if (in_array($target->getName(), $this->plugin->freezeList)) {
                 unset($this->plugin->freezeList[array_search($target->getName(), $this->plugin->freezeList)]);
-                $sender->sendMessage($this->config->get("prefix") . C::AQUA . 'Player ' . C::RED . $target->getName() . C::AQUA . ' will no longer be frozen');
+                $unfreeze = $this->getFormattedValue('unfreeze', ['{player}' => $target->getName()]);
+                $sender->sendMessage($this->getFormattedValue('prefix') . $unfreeze);
                 $target->setImmobile(false);
                 return true;
             }
 
             $this->plugin->freezeList[] = $target->getName();
-            $sender->sendMessage($this->config->get("prefix") . C::AQUA . 'Player ' . C::RED . $target->getName() . C::AQUA . ' will now be frozen');
+            $freeze = $this->getFormattedValue('unfreeze', ['{player}' => $target->getName()]);
+            $sender->sendMessage($this->getFormattedValue('prefix') . $freeze);
             $target->teleport(Server::getInstance()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
             $target->setImmobile(true);
-            $target->sendMessage($this->config->get("prefix") . C::RED . "You cannot move while frozen");
+            $target->sendMessage($this->getFormattedValue('prefix') . C::RED . "You cannot move while frozen");
             return true;
         }
 
-        $sender->sendMessage($this->config->get("prefix") . C::RED . 'Player not found');
+        $sender->sendMessage($this->getFormattedValue('prefix') . C::RED . 'Player not found');
 
     }
     public function getOwningPlugin(): Plugin

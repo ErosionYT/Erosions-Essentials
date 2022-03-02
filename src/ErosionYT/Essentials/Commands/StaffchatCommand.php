@@ -27,22 +27,22 @@ class StaffchatCommand extends Command implements PluginOwned
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool
     {
         if (!$sender->hasPermission("essentials.staffchat.command")) {
-            $sender->sendMessage($this->config->get("prefix") . C::RED . "You do not have permission to use this command");
+            $sender->sendMessage($this->getFormattedValue('prefix') . C::RED . "You do not have permission to use this command");
             return false;
         }
         if (count($args) < 1) {
-            $sender->sendMessage($this->config->get("prefix") . C::RED . "Usage: /staffchat <on:off>");
+            $sender->sendMessage($this->getFormattedValue('prefix') . C::RED . "Usage: /staffchat <on:off>");
             return false;
         }
         if (isset($args[0])) {
             switch (strtolower($args[0])) {
                 case "on":
                     $this->plugin->staffchat[strtolower($sender->getName())] = $sender;
-                    $sender->sendMessage($this->config->get("prefix") . C::GRAY . "You have enabled staffchat");
+                    $sender->sendMessage($this->getFormattedValue('prefix') . C::GRAY . "You have enabled staffchat");
                     return true;
                 case "off":
                     unset($this->plugin->staffchat[strtolower($sender->getName())]);
-                    $sender->sendMessage($this->config->get("prefix") . C::GRAY . "You have disabled staffchat");
+                    $sender->sendMessage($this->getFormattedValue('prefix') . C::GRAY . "You have disabled staffchat");
                     return true;
             }
         }

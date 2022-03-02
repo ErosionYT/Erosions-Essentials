@@ -39,7 +39,7 @@ class HealCommand extends Command implements PluginOwned {
         }
 
 		$sender->setHealth($sender->getMaxHealth());
-		$sender->sendMessage($this->config->get("prefix") . C::AQUA .  "You have been healed");
+		$sender->sendMessage($this->getFormattedValue('prefix') . C::AQUA .  "You have been healed");
 		return true;
 	}
     public function getOwningPlugin(): Plugin

@@ -7,13 +7,14 @@ Fixed by [WolfDen133](https://github.com/WolfDen133)
 - [x] Announcement system (can change in the config)
 - [x] Easy gamemode control
 - [x] Custom join messages
-- [] Freeze commands
+- [x] Freeze commands
 - [x] Staff chat
-- [] Speed command
+- [ ] Speed command
 
 ## Permissions
 | Command  | Permission | Default |
 | :------------ |:---------------:| -----:|
+|Brag|essentials.brag.command|true|
 |Feed|essentials.feed.command|op|
 |Fly|essentials.fly.command|op|
 |Gma|essentials.gma.command|op|

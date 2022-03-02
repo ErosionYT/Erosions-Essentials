@@ -47,13 +47,13 @@ class FlyCommand extends Command implements PluginOwned {
                 case "enable":
 				$sender->setAllowFlight(true);
 			    $sender->setFlying(true);
-			    $sender->sendMessage($this->config->get("prefix") . C::RED . "You have enabled fly");
+			    $sender->sendMessage($this->getFormattedValue('prefix') . C::RED . "You have enabled fly");
 				return true;
 				case "off":
                 case "disable":
 				$sender->setAllowFlight(false);
 				$sender->setFlying(false);
-				$sender->sendMessage($this->config->get("prefix") . C::AQUA . "You have disabled fly");
+				$sender->sendMessage($this->getFormattedValue('prefix') . C::AQUA . "You have disabled fly");
 				return true;
 			}
 		}

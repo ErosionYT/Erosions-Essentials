@@ -37,7 +37,7 @@ class GmsCommand extends Command implements PluginOwned {
         }
 
         $sender->setGamemode(GameMode::SURVIVAL());
-        $sender->sendMessage($this->config->get("prefix") . C::AQUA . $this->config->get("survival-mode"));
+        $sender->sendMessage($this->getFormattedValue('prefix') . $this->getFormattedValue('survival-mode'));
         return true;
     }
     public function getOwningPlugin(): Plugin

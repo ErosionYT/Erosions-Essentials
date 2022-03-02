@@ -14,6 +14,8 @@ use pocketmine\item\Tool;
 use pocketmine\player\Player;
 
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
+use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\context\ClosureContext;
+use cooldogedev\BedrockEconomy\BedrockEconomy;
 use ErosionYT\Essentials\Main;
 
 class RepairCommand extends Command implements PluginOwned
@@ -54,7 +56,11 @@ class RepairCommand extends Command implements PluginOwned
 
 
             $economy = BedrockEconomyAPI::getInstance();
-            $mymoney = $economy->getPlayerBalance($sender->getName());
+            $mymoney = $economy->getPlayerBalance($sender->getName(), ClosureContext::create(
+                function (?int $balance): void {
+                    var_dump($balance);
+                },
+            ));
             $cash = $this->plugin->getConfig()->get("price");
             $dg = $sender->getInventory()->getItemInHand()->getMeta();
             $index = $sender->getInventory()->getHeldItemIndex();
@@ -62,31 +68,35 @@ class RepairCommand extends Command implements PluginOwned
 
 
             if($mymoney->count() < $cash * $dg){
-                $sender->sendMessage($this->config->get("prefix") . TextFormat::GRAY . "You don't have enough money!");
+                $sender->sendMessage($this->getFormattedValue('prefix') . TextFormat::GRAY . "You don't have enough money!");
                 return;
             }
 
             if(!($item instanceof Armor or $item instanceof Tool)) {
-                $sender->sendMessage($this->config->get("prefix") . TextFormat::GRAY . "This item can't repaired");
+                $sender->sendMessage($this->getFormattedValue('prefix') . TextFormat::GRAY . "This item can't repaired");
                 return;
             }
 
             if($item->getMeta() <= 0){
-                $sender->sendMessage($this->config->get("prefix") . TextFormat::GRAY . "Item doesn't have any damage.");
+                $sender->sendMessage($this->getFormattedValue('prefix') . TextFormat::GRAY . "Item doesn't have any damage.");
                 return;
             }
 
 
-            $economy->subtractFromPlayerBalance($sender->getName(), $cash * $dg);
+            $economy->subtractFromPlayerBalance($sender->getName(), $cash * $dg, ClosureContext::create(
+                    function (bool $wasUpdated): void {
+                        var_dump($wasUpdated);
+                    },
+                )
+            );;
             $sender->getInventory()->setItem($index, $item->setDamage(0));
-            $sender->sendMessage($this->config->get("prefix") . TextFormat::GRAY . "Your item have been repaired");
+            $sender->sendMessage($this->getFormattedValue('prefix') . TextFormat::GRAY . "Your item have been repaired");
 
         });
 
         $mny = $this->plugin->getConfig()->get("price");
         $dg = $sender->getInventory()->getItemInHand()->getMeta();
         $pc = $mny * $dg;
-        $economy = BedrockEconomyAPI::getInstance();
 
         $f->setTitle("•RepairUI•");
         $f->addLabel("\n§cPrice per Damage: §f$mny\n§cItem damage: §f$dg \n§cTotal money needed : §f$pc");

@@ -36,7 +36,7 @@ class GmcCommand extends Command implements PluginOwned {
             return false;
         }
 		$sender->setGamemode(GameMode::CREATIVE());
-		$sender->sendMessage($this->config->get("prefix") . C::AQUA . $this->config->get("creative-mode"));
+		$sender->sendMessage($this->getFormattedValue('prefix') . $this->getFormattedValue('creative-mode'));
 		return true;
 	}
     public function getOwningPlugin(): Plugin

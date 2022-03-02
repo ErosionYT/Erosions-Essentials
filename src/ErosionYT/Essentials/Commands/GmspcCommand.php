@@ -37,7 +37,7 @@ class GmspcCommand extends Command implements PluginOwned {
         }
 
         $sender->setGamemode(GameMode::SPECTATOR());
-        $sender->sendMessage($this->config->get("prefix") . C::AQUA . $this->config->get("spectator-mode"));
+        $sender->sendMessage($this->getFormattedValue('prefix') . $this->getFormattedValue('spectator-mode'));
         return true;
     }
     public function getOwningPlugin(): Plugin

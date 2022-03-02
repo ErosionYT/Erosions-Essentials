@@ -38,7 +38,7 @@ class GmaCommand extends Command implements PluginOwned {
             return false;
         }
         $sender->setGamemode(GameMode::ADVENTURE());
-        $sender->sendMessage($this->config->get("prefix") . C::AQUA . $this->config->get("adventure-mode"));
+        $sender->sendMessage($this->getFormattedValue('prefix') . $this->getFormattedValue('adventure-mode'));
         return true;
     }
 

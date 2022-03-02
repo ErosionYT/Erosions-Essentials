@@ -43,7 +43,7 @@ class FeedCommand extends Command implements PluginOwned {
         }
 		$sender->getHungerManager()->setFood(20);
         $sender->getHungerManager()->setSaturation(5);
-		$sender->sendMessage($this->config->get("prefix") . C::AQUA . "You have been fed");
+		$sender->sendMessage($this->getFormattedValue('prefix') . C::AQUA . "You have been fed");
 	}
 
     public function getOwningPlugin(): Plugin

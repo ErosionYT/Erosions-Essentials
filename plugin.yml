@@ -31,5 +31,6 @@ permissions:
     default: op
   essentials.staffchat.command:
     default: op
-  essentials.speed.command:
-    default: op
+  essentials.brag.command:
+    default: true
+
