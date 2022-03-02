@@ -50,7 +50,7 @@ class FreezeCommand extends Command implements PluginOwned
             }
 
             $this->plugin->freezeList[] = $target->getName();
-            $freeze = $this->getFormattedValue('unfreeze', ['{player}' => $target->getName()]);
+            $freeze = $this->plugin->getFormattedValue('unfreeze', ['{player}' => $target->getName()]);
             $sender->sendMessage($this->plugin->getFormattedValue('prefix') . $freeze);
             $target->teleport(Server::getInstance()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
             $target->setImmobile(true);

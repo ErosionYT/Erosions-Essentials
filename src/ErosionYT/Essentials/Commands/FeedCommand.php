@@ -27,7 +27,6 @@ class FeedCommand extends Command implements PluginOwned {
     public function execute(CommandSender $sender, string $commandLabel, array $args) : void
     {
         $plugin = $this->plugin;
-        $this->config = $plugin->getConfig();
 
 		if (!$sender->hasPermission($this->getPermission())) {
 			$sender->sendMessage(C::RED . "You do not have permission to use this command");

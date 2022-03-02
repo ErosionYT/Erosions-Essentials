@@ -22,7 +22,6 @@ class BragCommand extends Command implements PluginOwned
         $this->setAliases(['']);
         $this->setUsage("/brag");
         $this->plugin = $plugin;
-        $this->config = $plugin->getConfig();
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)
