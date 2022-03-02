@@ -8,14 +8,13 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\command\Command;
-use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 
 class FreezeCommand extends Command implements PluginOwned
 {
-    public Config $config;
+
     public Main $plugin;
 
     public function __construct(string $name, Main $plugin)
@@ -26,7 +25,6 @@ class FreezeCommand extends Command implements PluginOwned
         $this->setUsage("/freeze <player>");
         $this->setAliases(['ss']);
         $this->plugin = $plugin;
-        $this->config = $plugin->getConfig();
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)
@@ -45,22 +43,22 @@ class FreezeCommand extends Command implements PluginOwned
         if ($target instanceof Player) {
             if (in_array($target->getName(), $this->plugin->freezeList)) {
                 unset($this->plugin->freezeList[array_search($target->getName(), $this->plugin->freezeList)]);
-                $unfreeze = $this->getFormattedValue('unfreeze', ['{player}' => $target->getName()]);
-                $sender->sendMessage($this->getFormattedValue('prefix') . $unfreeze);
+                $unfreeze = $this->plugin->getFormattedValue('unfreeze', ['{player}' => $target->getName()]);
+                $sender->sendMessage($this->plugin->getFormattedValue('prefix') . $unfreeze);
                 $target->setImmobile(false);
                 return true;
             }
 
             $this->plugin->freezeList[] = $target->getName();
             $freeze = $this->getFormattedValue('unfreeze', ['{player}' => $target->getName()]);
-            $sender->sendMessage($this->getFormattedValue('prefix') . $freeze);
+            $sender->sendMessage($this->plugin->getFormattedValue('prefix') . $freeze);
             $target->teleport(Server::getInstance()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
             $target->setImmobile(true);
-            $target->sendMessage($this->getFormattedValue('prefix') . C::RED . "You cannot move while frozen");
+            $target->sendMessage($this->plugin->getFormattedValue('prefix') . C::RED . "You cannot move while frozen");
             return true;
         }
 
-        $sender->sendMessage($this->getFormattedValue('prefix') . C::RED . 'Player not found');
+        $sender->sendMessage($this->plugin->getFormattedValue('prefix') . C::RED . 'Player not found');
 
     }
     public function getOwningPlugin(): Plugin

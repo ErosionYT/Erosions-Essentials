@@ -9,13 +9,11 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
-use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 
 class HealCommand extends Command implements PluginOwned {
 
     public Main $plugin;
-    public Config $config;
 
     public function __construct(string $name, Main $plugin) {
         parent::__construct($name);
@@ -23,7 +21,6 @@ class HealCommand extends Command implements PluginOwned {
         $this->setPermission("essentials.heal.command");
         $this->setUsage("/heal");
         $this->plugin = $plugin;
-        $this->config = $plugin->getConfig();
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool{
@@ -39,7 +36,7 @@ class HealCommand extends Command implements PluginOwned {
         }
 
 		$sender->setHealth($sender->getMaxHealth());
-		$sender->sendMessage($this->getFormattedValue('prefix') . C::AQUA .  "You have been healed");
+		$sender->sendMessage($this->plugin->getFormattedValue('prefix') . C::AQUA .  "You have been healed");
 		return true;
 	}
     public function getOwningPlugin(): Plugin

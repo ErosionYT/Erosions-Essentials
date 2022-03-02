@@ -68,17 +68,17 @@ class RepairCommand extends Command implements PluginOwned
 
 
             if($mymoney->count() < $cash * $dg){
-                $sender->sendMessage($this->getFormattedValue('prefix') . TextFormat::GRAY . "You don't have enough money!");
+                $sender->sendMessage($this->plugin->getFormattedValue('prefix') . TextFormat::GRAY . "You don't have enough money!");
                 return;
             }
 
             if(!($item instanceof Armor or $item instanceof Tool)) {
-                $sender->sendMessage($this->getFormattedValue('prefix') . TextFormat::GRAY . "This item can't repaired");
+                $sender->sendMessage($this->plugin->getFormattedValue('prefix') . TextFormat::GRAY . "This item can't repaired");
                 return;
             }
 
             if($item->getMeta() <= 0){
-                $sender->sendMessage($this->getFormattedValue('prefix') . TextFormat::GRAY . "Item doesn't have any damage.");
+                $sender->sendMessage($this->plugin->getFormattedValue('prefix') . TextFormat::GRAY . "Item doesn't have any damage.");
                 return;
             }
 
@@ -90,7 +90,7 @@ class RepairCommand extends Command implements PluginOwned
                 )
             );;
             $sender->getInventory()->setItem($index, $item->setDamage(0));
-            $sender->sendMessage($this->getFormattedValue('prefix') . TextFormat::GRAY . "Your item have been repaired");
+            $sender->sendMessage($this->plugin->getFormattedValue('prefix') . TextFormat::GRAY . "Your item have been repaired");
 
         });
 

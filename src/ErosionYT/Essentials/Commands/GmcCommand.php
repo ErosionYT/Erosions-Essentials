@@ -8,13 +8,12 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
-use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 use ErosionYT\Essentials\Main;
 
 class GmcCommand extends Command implements PluginOwned {
 
-    private Config $config;
+    private Main $plugin;
 
 	public function __construct(string $name, Main $plugin)
     {
@@ -23,7 +22,7 @@ class GmcCommand extends Command implements PluginOwned {
         $this->setDescription("Change your gamemode to creative");
         $this->setAliases(['creative', '1', 'c']);
         $this->setUsage("/gmc");
-        $this->config = $plugin->getConfig();
+        $this->plugin = $plugin;
     }
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool
     {
@@ -36,7 +35,7 @@ class GmcCommand extends Command implements PluginOwned {
             return false;
         }
 		$sender->setGamemode(GameMode::CREATIVE());
-		$sender->sendMessage($this->getFormattedValue('prefix') . $this->getFormattedValue('creative-mode'));
+		$sender->sendMessage($this->plugin->getFormattedValue('prefix') . $this->plugin->getFormattedValue('creative-mode'));
 		return true;
 	}
     public function getOwningPlugin(): Plugin

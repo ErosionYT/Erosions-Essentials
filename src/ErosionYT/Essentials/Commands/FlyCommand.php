@@ -9,12 +9,10 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
-use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 
 class FlyCommand extends Command implements PluginOwned {
 
-    public Config $config;
     public Main $plugin;
 
 	public function __construct(string $name, Main $plugin) {
@@ -24,7 +22,6 @@ class FlyCommand extends Command implements PluginOwned {
         $this->setPermission("essentials.fly.command");
 
 		$this->plugin = $plugin;
-        $this->config = $plugin->getConfig();
     }
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool{
 		if (!$sender->hasPermission($this->getPermission())) {
@@ -47,13 +44,13 @@ class FlyCommand extends Command implements PluginOwned {
                 case "enable":
 				$sender->setAllowFlight(true);
 			    $sender->setFlying(true);
-			    $sender->sendMessage($this->getFormattedValue('prefix') . C::RED . "You have enabled fly");
+			    $sender->sendMessage($this->plugin->getFormattedValue('prefix') . C::RED . "You have enabled fly");
 				return true;
 				case "off":
                 case "disable":
 				$sender->setAllowFlight(false);
 				$sender->setFlying(false);
-				$sender->sendMessage($this->getFormattedValue('prefix') . C::AQUA . "You have disabled fly");
+				$sender->sendMessage($this->plugin->getFormattedValue('prefix') . C::AQUA . "You have disabled fly");
 				return true;
 			}
 		}

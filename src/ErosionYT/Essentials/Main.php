@@ -3,8 +3,9 @@
 namespace ErosionYT\Essentials;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
 
-use ErosionYT\Essentials\Commands\{
+use ErosionYT\Essentials\Commands\{BragCommand,
     CreditsCommand,
     FlyCommand,
     FeedCommand,
@@ -15,8 +16,7 @@ use ErosionYT\Essentials\Commands\{
     GmaCommand,
     RepairCommand,
     FreezeCommand,
-    StaffchatCommand
-};
+    StaffchatCommand};
 use ErosionYT\Essentials\Tasks\AnnouncementsTask;
 
 class Main extends PluginBase
@@ -37,8 +37,6 @@ class Main extends PluginBase
 
     protected function onEnable() : void
     {
-        $config = $this->getConfig();
-
         $this->getServer()->getNetwork()->setName($this->getFormattedValue('motd'));
 
         // Load worlds
@@ -60,7 +58,8 @@ class Main extends PluginBase
             new CreditsCommand("credits"),
             new RepairCommand("repair", $this),
             new FreezeCommand("freeze", $this),
-            new StaffchatCommand("staffchat", $this)
+            new StaffchatCommand("staffchat", $this),
+            new BragCommand("brag", $this)
 
         ]);
 
@@ -71,9 +70,8 @@ class Main extends PluginBase
     }
 
     protected function onDisable() : void {
-        $config = $this->getConfig();
 
-        foreach ($this->getServer()->getOnlinePlayers() as $player) $player->kick($config->get("kick-message"), false);
+        foreach ($this->getServer()->getOnlinePlayers() as $player) $player->kick($this->getFormattedValue('kick-message'), false);
     }
 
     /**

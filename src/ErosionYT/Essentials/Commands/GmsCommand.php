@@ -8,13 +8,12 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
-use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 use ErosionYT\Essentials\Main;
 
 class GmsCommand extends Command implements PluginOwned {
 
-    private Config $config;
+    private Main $plugin;
 
 	public function __construct(string $name, Main $plugin)
     {
@@ -23,7 +22,7 @@ class GmsCommand extends Command implements PluginOwned {
         $this->setDescription("Change your gamemode to survival");
         $this->setAliases(['survival', '0', 's']);
         $this->setUsage("/gms");
-        $this->config = $plugin->getConfig();
+        $this->plugin = $plugin;
     }
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool
     {
@@ -37,7 +36,7 @@ class GmsCommand extends Command implements PluginOwned {
         }
 
         $sender->setGamemode(GameMode::SURVIVAL());
-        $sender->sendMessage($this->getFormattedValue('prefix') . $this->getFormattedValue('survival-mode'));
+        $sender->sendMessage($this->plugin->getFormattedValue('prefix') . $this->plugin->getFormattedValue('survival-mode'));
         return true;
     }
     public function getOwningPlugin(): Plugin

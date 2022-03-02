@@ -4,16 +4,14 @@ namespace ErosionYT\Essentials\Commands;
 
 use ErosionYT\Essentials\Main;
 use pocketmine\command\Command;
-use pocketmine\utils\Config;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
+use pocketmine\player\Player;
 
 
 class BragCommand extends Command implements PluginOwned
 {
-
-    private Config $config;
     private Main $plugin;
 
     public function __construct(string $name, Main $plugin)
@@ -29,12 +27,15 @@ class BragCommand extends Command implements PluginOwned
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)
     {
+        if (!($sender instanceof Player))
+            return false;
+
         $name = $sender->getName();
         $item = $sender->getInventory()->getItemInHand()->getName();
         $count = $sender->getInventory()->getItemInHand()->getCount();
 
-        $msg = $this->getFormattedValue('brag', ['{player}' => $name, '{item}' => $item, '{count}' => $count]);
-        $prefix = $this->getFormattedValue('prefix');
+        $msg = $this->plugin->getFormattedValue('brag', ['{player}' => $name, '{item}' => $item, '{count}' => $count]);
+        $prefix = $this->plugin->getFormattedValue('prefix');
 
         $this->plugin->getServer()->broadcastMessage($prefix . $msg);
 

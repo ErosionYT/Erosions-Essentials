@@ -9,13 +9,11 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
-use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 
 class FeedCommand extends Command implements PluginOwned {
 
     public Main $plugin;
-    public Config $config;
 
 	public function __construct(string $name, Main $plugin) {
         parent::__construct($name);
@@ -24,7 +22,6 @@ class FeedCommand extends Command implements PluginOwned {
         $this->setUsage("/feed");
         $this->setAliases(['']);
 
-        $this->config = $plugin->getConfig();
         $this->plugin = $plugin;
     }
     public function execute(CommandSender $sender, string $commandLabel, array $args) : void
@@ -43,7 +40,7 @@ class FeedCommand extends Command implements PluginOwned {
         }
 		$sender->getHungerManager()->setFood(20);
         $sender->getHungerManager()->setSaturation(5);
-		$sender->sendMessage($this->getFormattedValue('prefix') . C::AQUA . "You have been fed");
+		$sender->sendMessage($this->plugin->getFormattedValue('prefix') . C::AQUA . "You have been fed");
 	}
 
     public function getOwningPlugin(): Plugin

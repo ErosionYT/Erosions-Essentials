@@ -8,13 +8,12 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
-use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 use ErosionYT\Essentials\Main;
 
 class GmspcCommand extends Command implements PluginOwned {
 
-    private Config $config;
+    private Main $plugin;
 
     public function __construct(string $name, Main $plugin)
     {
@@ -23,7 +22,7 @@ class GmspcCommand extends Command implements PluginOwned {
         $this->setDescription("Change your gamemode to Spectator");
         $this->setAliases(['Spectator', '3', 'spec']);
         $this->setUsage("/gmspc");
-        $this->config = $plugin->getConfig();
+        $this->plugin = $plugin;
     }
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool
     {
@@ -37,7 +36,7 @@ class GmspcCommand extends Command implements PluginOwned {
         }
 
         $sender->setGamemode(GameMode::SPECTATOR());
-        $sender->sendMessage($this->getFormattedValue('prefix') . $this->getFormattedValue('spectator-mode'));
+        $sender->sendMessage($this->plugin->getFormattedValue('prefix') . $this->plugin->getFormattedValue('spectator-mode'));
         return true;
     }
     public function getOwningPlugin(): Plugin
