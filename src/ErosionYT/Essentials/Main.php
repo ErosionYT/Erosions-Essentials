@@ -39,7 +39,7 @@ class Main extends PluginBase
     {
         $config = $this->getConfig();
 
-        $this->getServer()->getNetwork()->setName($config->get("motd"));
+        $this->getServer()->getNetwork()->setName($this->getFormattedValue('motd'));
 
         // Load worlds
         foreach ((array)$this->getConfig()->get("worlds") as $level_name) {
@@ -76,9 +76,24 @@ class Main extends PluginBase
         foreach ($this->getServer()->getOnlinePlayers() as $player) $player->kick($config->get("kick-message"), false);
     }
 
-    public function getFormattedValue (string $key, array $wildcards = []) : string
+    /**
+     * @param string $key
+     * @param array $wildcards
+     * @return string|array
+     */
+    public function getFormattedValue (string $key, array $wildcards = []) : string|array
     {
         $value = $this->getConfig()->getNested($key);
+
+        if (is_array($value)) {
+            $items = [];
+            foreach ($value as $item) {
+                foreach ($wildcards as $find => $replace) $item = str_replace($find, $replace, $value);
+                $items[] = TextFormat::colorize($item);
+            }
+
+            return $items;
+        }
 
         foreach ($wildcards as $find => $replace) $value = str_replace($find, $replace, $value);
 

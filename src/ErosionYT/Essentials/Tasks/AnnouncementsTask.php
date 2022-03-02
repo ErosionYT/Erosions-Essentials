@@ -13,8 +13,8 @@ class AnnouncementsTask extends Task
 {
     public function onRun() : void
     {
-        $announcements = (array) Main::getInstance()->getConfig()->get("announcements");
+        $announcements = (array) Main::getInstance()->getFormattedValue('announcements');
 
-        if (count(Server::getInstance()->getOnlinePlayers()) > 0) Main::getInstance()->getServer()->broadcastMessage("§a   §b\n§7 » ". $announcements[array_rand($announcements)] ."\n§e      §d");
+        if (count(Server::getInstance()->getOnlinePlayers()) > 0) Main::getInstance()->getServer()->broadcastMessage("§a   §b\n§7 ". $announcements[array_rand($announcements)] ."\n§e      §d");
     }
 }

@@ -6,6 +6,7 @@ use ErosionYT\Essentials\Main;
 use pocketmine\command\Command;
 use pocketmine\utils\Config;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 
 
@@ -38,5 +39,10 @@ class BragCommand extends Command implements PluginOwned
         $this->plugin->getServer()->broadcastMessage($prefix . $msg);
 
         return true;
+    }
+
+    public function getOwningPlugin(): Plugin
+    {
+        return Main::getInstance();
     }
 }
