@@ -31,6 +31,7 @@ class RepairCommand extends Command implements PluginOwned
         $this->setAliases(['repair']);
         $this->setPermission("essentials.repairui.command");
         $this->setUsage("/repairui");
+        $this->setPermissionMessage(TextFormat::RED . "Unknown command. Try /help for a list of commands");
         $this->config = $plugin->getConfig();
     }
 

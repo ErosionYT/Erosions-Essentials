@@ -5,8 +5,6 @@ use ErosionYT\Essentials\Main;
 
 use pocketmine\scheduler\Task;
 use pocketmine\Server;
-use pocketmine\plugin;
-use pocketmine\utils\Config;
 use function array_rand;
 
 class AnnouncementsTask extends Task

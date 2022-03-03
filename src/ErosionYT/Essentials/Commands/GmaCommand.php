@@ -24,6 +24,7 @@ class GmaCommand extends Command implements PluginOwned {
         $this->setDescription("Change your gamemode to adventure");
         $this->setAliases(['2', 'a', 'adventure']);
         $this->setUsage("/gma");
+        $this->setPermissionMessage(C::RED . "Unknown command. Try /help for a list of commands");
         $this->plugin = $plugin;
     }
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool
@@ -32,8 +33,8 @@ class GmaCommand extends Command implements PluginOwned {
             $sender->sendMessage("Use the command in-game");
             return false;
         }
-        if (!$this->testPermission($sender)) {
-            $sender->sendMessage(C::RED . "You do not have permission to use this command");
+        if (!$sender->hasPermission($this->getPermission())) {
+            $sender->sendMessage($this->getPermissionMessage());
             return false;
         }
         $sender->setGamemode(GameMode::ADVENTURE());

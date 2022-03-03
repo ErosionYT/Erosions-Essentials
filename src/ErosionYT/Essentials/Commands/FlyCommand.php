@@ -20,14 +20,15 @@ class FlyCommand extends Command implements PluginOwned {
         $this->setDescription("Fly in Survival");
         $this->setAliases(['']);
         $this->setPermission("essentials.fly.command");
+        $this->setPermissionMessage(C::RED . "Unknown command. Try /help for a list of commands");
 
 		$this->plugin = $plugin;
     }
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool{
-		if (!$sender->hasPermission($this->getPermission())) {
-			$sender->sendMessage(C::RED . "You do not have permission to use this command");
-			return false;
-		}
+        if (!$sender->hasPermission($this->getPermission())) {
+            $sender->sendMessage($this->getPermissionMessage());
+            return false;
+        }
 
         if (!($sender instanceof Player)) {
             $sender->sendMessage(C::RED . "This command is for players only");

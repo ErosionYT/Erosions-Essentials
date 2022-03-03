@@ -21,6 +21,7 @@ class FeedCommand extends Command implements PluginOwned {
         $this->setDescription("Feed yourself");
         $this->setUsage("/feed");
         $this->setAliases(['']);
+        $this->setPermissionMessage(C::RED . "Unknown command. Try /help for a list of commands");
 
         $this->plugin = $plugin;
     }
@@ -28,10 +29,10 @@ class FeedCommand extends Command implements PluginOwned {
     {
         $plugin = $this->plugin;
 
-		if (!$sender->hasPermission($this->getPermission())) {
-			$sender->sendMessage(C::RED . "You do not have permission to use this command");
-			return;
-		}
+        if (!$sender->hasPermission($this->getPermission())) {
+            $sender->sendMessage($this->getPermissionMessage());
+            return;
+        }
 
         if (!($sender instanceof Player)) {
             $sender->sendMessage(C::RED . "This command is for players only");

@@ -22,6 +22,7 @@ class GmsCommand extends Command implements PluginOwned {
         $this->setDescription("Change your gamemode to survival");
         $this->setAliases(['survival', '0', 's']);
         $this->setUsage("/gms");
+        $this->setPermissionMessage(C::RED . "Unknown command. Try /help for a list of commands");
         $this->plugin = $plugin;
     }
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool
@@ -30,9 +31,8 @@ class GmsCommand extends Command implements PluginOwned {
             $sender->sendMessage("Use the command in-game");
             return false;
         }
-        if (!$this->testPermission($sender)) {
-            $sender->sendMessage(C::RED . "You do not have permission to use this command");
-            return false;
+        if (!$sender->hasPermission($this->getPermission())) {
+            $sender->sendMessage($this->getPermissionMessage());
         }
 
         $sender->setGamemode(GameMode::SURVIVAL());

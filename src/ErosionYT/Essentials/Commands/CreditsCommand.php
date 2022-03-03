@@ -18,6 +18,7 @@ class CreditsCommand extends Command implements PluginOwned
         $this->setDescription("Check the credits");
         $this->setAliases(['credit', 'cred']);
         $this->setUsage("/credits");
+        $this->setPermissionMessage(TextFormat::RED . "Unknown command. Try /help for a list of commands");
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)

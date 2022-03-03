@@ -4,6 +4,9 @@ namespace ErosionYT\Essentials;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
+use pocketmine\entity\effect\EffectInstance;
+use pocketmine\entity\effect\VanillaEffects;
+use pocketmine\entity\effect\EffectManager;
 
 use ErosionYT\Essentials\Commands\{BragCommand,
     CreditsCommand,
@@ -96,6 +99,24 @@ class Main extends PluginBase
         foreach ($wildcards as $find => $replace) $value = str_replace($find, $replace, $value);
 
         return TextFormat::colorize($value);
+    }
+
+    public function nightvisionon (Player $player) : void
+    {
+        $this->nightvisioneffect($player);
+        $player->sendMessage($this->getFormattedValue("prefix") . $this->getFormattedValue("nv-enable"));
+    }
+
+    public function nightvisioneffect (Player $player) : void
+    {
+        $effect = new EffectInstance(VanillaEffects::NIGHT_VISION(),2147483647, 255, false);
+        $player->getEffects()->add($effect);
+    }
+
+    public function nightvisionoff (Player $player) : void
+    {
+        $player->getEffects()->remove(VanillaEffects::NIGHT_VISION());
+        $player->sendMessage($this->getFormattedValue("prefix") . $this->getFormattedValue("nv-disable"));
     }
 
     public static function getInstance(): self

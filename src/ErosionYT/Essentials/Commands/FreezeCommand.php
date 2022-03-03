@@ -24,6 +24,7 @@ class FreezeCommand extends Command implements PluginOwned
         $this->setPermission("essentials.freeze.command");
         $this->setUsage("/freeze <player>");
         $this->setAliases(['ss']);
+        $this->setPermissionMessage(TextFormat::RED . "Unknown command. Try /help for a list of commands");
         $this->plugin = $plugin;
     }
 

@@ -25,9 +25,14 @@
 prefix: "&f(&cEssentials&f)&r "
 staffchat-prefix: "&f(&cEssentials staff&f)&r"
 
+# Spam messages
+# Use | & | to set the colours of your messages
+chat-spam: "&cPlease slow down"
+command-spam: "&cPlease slow down using commands"
+
 # Server name / MOTD
 # Use | & | to set the colours of your messages
-motd: "My server"
+motd: "&cMy server"
 
 # Join & Leave messages
 # Change what your join and leave messages are
@@ -53,18 +58,18 @@ worlds:
 
 # Announcements
 # Announcements will be displayed every 5 minutes when someone is online
-# Use | § | to set the colours of your messages
+# Use | & | to set the colours of your messages
 announcements:
-  - "§l§cPlugin coded by ErosionYT"
+  - "&l&cPlugin coded by ErosionYT"
   - "test1"
   - "test2"
 
 # Gamemode Commands
-# Use | § | to set the colours of your messages
-adventure-mode: "You have changed your gamemode to Adventure"
-creative-mode: "You have changed your gamemode to Creative"
-survival-mode: "You have changed your gamemode to Survival"
-spectator-mode: "You have changed your gamemode to spectator"
+# Use | & | to set the colours of your messages
+adventure-mode: "&7You have changed your gamemode to Adventure"
+creative-mode: "&7You have changed your gamemode to Creative"
+survival-mode: "&7You have changed your gamemode to Survival"
+spectator-mode: "&7You have changed your gamemode to spectator"
 
 
 # NORMAL COMMANDS
@@ -79,3 +84,7 @@ price: 100
 # Use | & | to set the colours of your messages
 brag: "{player} is bragging {count}x {items}"
 
+# Night vision
+# Use | & | to set the colours of your messages
+nv-enable: "&cYou have enabled nv"
+nv-disable: "&cYou have disabled nv"

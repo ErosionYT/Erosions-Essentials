@@ -22,6 +22,7 @@ class GmspcCommand extends Command implements PluginOwned {
         $this->setDescription("Change your gamemode to Spectator");
         $this->setAliases(['Spectator', '3', 'spec']);
         $this->setUsage("/gmspc");
+        $this->setPermissionMessage(C::RED . "Unknown command. Try /help for a list of commands");
         $this->plugin = $plugin;
     }
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool
@@ -30,8 +31,9 @@ class GmspcCommand extends Command implements PluginOwned {
             $sender->sendMessage("Use the command in-game");
             return false;
         }
-        if (!$this->testPermission($sender)) {
-            $sender->sendMessage(C::RED . "You do not have permission to use this command");
+
+        if (!$sender->hasPermission($this->getPermission())) {
+            $sender->sendMessage($this->getPermissionMessage());
             return false;
         }
 

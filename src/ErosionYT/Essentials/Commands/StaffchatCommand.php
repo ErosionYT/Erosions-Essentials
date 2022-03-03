@@ -19,12 +19,13 @@ class StaffchatCommand extends Command implements PluginOwned
         $this->setPermission("essentials.staffchat.command");
         $this->setAliases(['sc']);
         $this->setUsage("/staffchat <on:off>");
+        $this->setPermissionMessage(C::RED . "Unknown command. Try /help for a list of commands");
         $this->plugin = $plugin;
     }
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool
     {
-        if (!$sender->hasPermission("essentials.staffchat.command")) {
-            $sender->sendMessage($this->plugin->getFormattedValue('prefix') . C::RED . "You do not have permission to use this command");
+        if (!$sender->hasPermission($this->getPermission())) {
+            $sender->sendMessage($this->getPermissionMessage());
             return false;
         }
         if (count($args) < 1) {
