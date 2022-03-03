@@ -7,6 +7,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\entity\effect\EffectInstance;
 use pocketmine\entity\effect\VanillaEffects;
 use pocketmine\entity\effect\EffectManager;
+use pocketmine\player\Player;
 
 use ErosionYT\Essentials\Commands\{BragCommand,
     CreditsCommand,
@@ -31,6 +32,7 @@ class Main extends PluginBase
     public array $freezeList = [];
 
     public array $staffchat = [];
+    public array $lastchat = [];
 
     protected function onLoad(): void
     {

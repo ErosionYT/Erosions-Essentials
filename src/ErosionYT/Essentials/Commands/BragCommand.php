@@ -8,6 +8,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat as C;
 
 class BragCommand extends Command implements PluginOwned
 {
@@ -20,7 +21,7 @@ class BragCommand extends Command implements PluginOwned
         $this->setPermission("essentials.brag.command");
         $this->setAliases(['']);
         $this->setUsage("/brag");
-        $this->setPermissionMessage(TextFormat::RED . "Unknown command. Try /help for a list of commands");
+        $this->setPermissionMessage(C::RED . "Unknown command. Try /help for a list of commands");
         $this->plugin = $plugin;
     }
 
