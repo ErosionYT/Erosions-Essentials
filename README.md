@@ -1,4 +1,4 @@
-# Erosion's Essentials
+# Erosion's Essentials [![](https://poggit.pmmp.io/shield.state/Erosions-Essentials)](https://poggit.pmmp.io/p/Erosions-Essentials)
 Plugin coded by ErosionYT for public use.
 
 Fixed by [WolfDen133](https://github.com/WolfDen133)
