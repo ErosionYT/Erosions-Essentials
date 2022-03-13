@@ -8,7 +8,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\command\Command;
-use pocketmine\utils\TextFormat as C;
+use pocketmine\utils\TextFormat;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 
@@ -31,7 +31,7 @@ class FreezeCommand extends Command implements PluginOwned
     public function execute(CommandSender $sender, string $commandLabel, array $args)
     {
         if (!$sender->hasPermission("essentials.freeze.command")) {
-            $sender->sendMessage(C::RED . "You dont have permission to use that command.");
+            $sender->sendMessage(TextFormat::RED . "You dont have permission to use that command.");
             return false;
         }
 
@@ -55,11 +55,11 @@ class FreezeCommand extends Command implements PluginOwned
             $sender->sendMessage($this->plugin->getFormattedValue('prefix') . $freeze);
             $target->teleport(Server::getInstance()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
             $target->setImmobile(true);
-            $target->sendMessage($this->plugin->getFormattedValue('prefix') . C::RED . "You cannot move while frozen");
+            $target->sendMessage($this->plugin->getFormattedValue('prefix') . TextFormat::RED . "You cannot move while frozen");
             return true;
         }
 
-        $sender->sendMessage($this->plugin->getFormattedValue('prefix') . C::RED . 'Player not found');
+        $sender->sendMessage($this->plugin->getFormattedValue('prefix') . TextFormat::RED . 'Player not found');
 
     }
     public function getOwningPlugin(): Plugin

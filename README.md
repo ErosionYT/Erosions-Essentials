@@ -11,8 +11,7 @@ Fixed by [WolfDen133](https://github.com/WolfDen133)
 - [x] Staff chat
 - [x] Brag command
 - [ ] Speed command
-- [ ] Night vision
-- [ ] Anti-Spam
+- [x] Night vision
 
 ## Permissions
 | Command  | Permission | Default |
@@ -29,5 +28,6 @@ Fixed by [WolfDen133](https://github.com/WolfDen133)
 |Freeze|essentials.freeze.command|op|
 |Staffchat|essentials.staffchat.command|op|
 |Night Vision|essentials.nv.command|op|
+
 ## Plugins needed
 - [BedrockEconomy](https://poggit.pmmp.io/p/BedrockEconomy/2.0.4)

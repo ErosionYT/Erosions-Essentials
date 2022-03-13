@@ -53,40 +53,12 @@ class EventListener implements Listener {
             $ev->getPlayer()->sendMessage($this->plugin->getFormattedValue('prefix') . C::RED . "You cannot use commands or chat while frozen.");
         }
 
-        if (!isset($this->lastchat[$player->getName()])) {
-            $this->lastchat[$player->getName()] = time();
-        } else {
-            if ((time() - $this->lastchat[$player->getName()]) < 1) {
-                $ev->cancel();
-                $player->sendMessage($this->plugin->getFormattedValue('prefix') . $this->plugin->getFormattedValue('chat-spam'));
-                return;
-            } else {
-                $this->lastchat[$player->getName()] = time();
-            }
-        }
-
         if (isset($this->plugin->staffchat[strtolower($player->getName())])) {
             foreach ($this->plugin->getServer()->getOnlinePlayers() as $target) {
                 if ($target->hasPermission("essentials.staffchat.command")) {
                     $target->sendMessage($this->plugin->getFormattedValue('staffchat-prefix') . C::RED . $player->getName() . ": " . C::WHITE . $message);
                     $ev->Cancel();
                 }
-            }
-        }
-    }
-
-    public function onPlayerCommandPreprocess(PlayerCommandPreprocessEvent $ev) {
-        $player = $ev->getPlayer();
-
-        if (!isset($this->lastchat[$player->getName()])) {
-            $this->lastchat[$player->getName()] = time();
-        } else {
-            if ((time() - $this->lastchat[$player->getName()]) < 1) {
-                $ev->cancel();
-                $player->sendMessage($this->plugin->getFormattedValue('prefix') . $this->plugin->getFormattedValue('spam-command'));
-                return;
-            } else {
-                $this->lastchat[$player->getName()] = time();
             }
         }
     }

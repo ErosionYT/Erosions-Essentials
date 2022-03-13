@@ -32,7 +32,6 @@ class Main extends PluginBase
     public array $freezeList = [];
 
     public array $staffchat = [];
-    public array $lastchat = [];
 
     protected function onLoad(): void
     {
