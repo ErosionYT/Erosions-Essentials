@@ -12,6 +12,7 @@ Fixed by [WolfDen133](https://github.com/WolfDen133)
 - [x] Brag command
 - [ ] Speed command
 - [x] Night vision
+- [ ] Repair system
 
 ## Permissions
 | Command  | Permission | Default |
@@ -28,5 +29,3 @@ Fixed by [WolfDen133](https://github.com/WolfDen133)
 |Staffchat|essentials.staffchat.command|op|
 |Night Vision|essentials.nv.command|op|
 
-## Plugins needed
-- [BedrockEconomy](https://poggit.pmmp.io/p/BedrockEconomy/2.0.4)
