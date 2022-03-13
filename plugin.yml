@@ -6,11 +6,7 @@ version: 1.0.0
 api: 4.0.0
 mcpe-protocols: [475, 476, 477, 479, 485, 486, 490, 491]
 
-softdepend: BedrockEconomy
-
 permissions:
-  essentials.repairui.command:
-    default: true
   essentials.heal.command:
     default: op
   essentials.fly.command:

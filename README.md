@@ -24,7 +24,6 @@ Fixed by [WolfDen133](https://github.com/WolfDen133)
 |Gms|essentials.gms.command|op|
 |Gmspc|essentials.gmspc.command|op|
 |Heal|essentials.heal.command|op|
-|Repair|essentials.repairui.command|op|
 |Freeze|essentials.freeze.command|op|
 |Staffchat|essentials.staffchat.command|op|
 |Night Vision|essentials.nv.command|op|

@@ -18,7 +18,6 @@ use ErosionYT\Essentials\Commands\{BragCommand,
     GmsCommand,
     GmcCommand,
     GmaCommand,
-    RepairCommand,
     FreezeCommand,
     StaffchatCommand};
 use ErosionYT\Essentials\Tasks\AnnouncementsTask;
@@ -60,7 +59,6 @@ class Main extends PluginBase
             new GmcCommand("gmc", $this),
             new GmaCommand("gma", $this),
             new CreditsCommand("credits"),
-            new RepairCommand("repair", $this),
             new FreezeCommand("freeze", $this),
             new StaffchatCommand("staffchat", $this),
             new BragCommand("brag", $this)
