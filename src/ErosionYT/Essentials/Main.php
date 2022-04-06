@@ -19,6 +19,7 @@ use ErosionYT\Essentials\Commands\{BragCommand,
     GmcCommand,
     GmaCommand,
     FreezeCommand,
+    PingCommand,
     StaffchatCommand};
 use ErosionYT\Essentials\Tasks\AnnouncementsTask;
 
@@ -43,9 +44,9 @@ class Main extends PluginBase
         $this->getServer()->getNetwork()->setName($this->getFormattedValue('motd'));
 
         // Load worlds
-        foreach ((array)$this->getConfig()->get("worlds") as $level_name) {
-            if (!$this->getServer()->getWorldManager()->isWorldLoaded($level_name)) {
-                $this->getServer()->getWorldManager()->loadWorld($level_name);
+        foreach ((array)$this->getConfig()->get("worlds") as $world_name) {
+            if (!$this->getServer()->getWorldManager()->isWorldLoaded($world_name)) {
+                $this->getServer()->getWorldManager()->loadWorld($world_name);
             }
         }
 
@@ -61,7 +62,8 @@ class Main extends PluginBase
             new CreditsCommand("credits"),
             new FreezeCommand("freeze", $this),
             new StaffchatCommand("staffchat", $this),
-            new BragCommand("brag", $this)
+            new BragCommand("brag", $this),
+            new PingCommand("ping", $this)
 
         ]);
 

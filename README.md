@@ -13,6 +13,8 @@ Fixed by [WolfDen133](https://github.com/WolfDen133)
 - [ ] Speed command
 - [x] Night vision
 - [ ] Repair system
+- [x] Ping command
+- [x] List command
 
 ## Permissions
 | Command  | Permission | Default |

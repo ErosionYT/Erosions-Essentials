@@ -88,3 +88,8 @@ brag: "{player} is bragging {count}x {items}"
 # Use | & | to set the colours of your messages
 nv-enable: "&cYou have enabled nv"
 nv-disable: "&cYou have disabled nv"
+
+# List command
+# | {count} - Ammount of players online | {max} - Maximum amount of players online | {player_names} - for users names |
+# use | & | to set the colours of your messages
+list: "List of online players on the server. {count} / {max} \n§7- §b {player_names}"
