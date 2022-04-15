@@ -15,6 +15,7 @@ Fixed by [WolfDen133](https://github.com/WolfDen133)
 - [ ] Repair system
 - [x] Ping command
 - [x] List command
+- [ ] Combat logger
 
 ## Permissions
 | Command  | Permission | Default |
